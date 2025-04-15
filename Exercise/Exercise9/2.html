@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Airline Reservation System | 23BCE1012</title>
+  </head>
+  <body>
+    <h2>Airline Seat Reservation</h2>
+    <button onclick="bookSeat()">Book a Seat</button>
+    <h3>Seat Assignments:</h3>
+    <table border="1">
+      <tr>
+        <th>Seat No.</th>
+        <th>Class</th>
+        <th>Status</th>
+      </tr>
+      <tbody id="seatTable"></tbody>
+    </table>
+    <h3>Boarding Pass:</h3>
+    <p id="boardingPass"></p>
+    <script>
+      let seats = new Array(10).fill(0);
+      function bookSeat() {
+        let name = prompt("Enter your name:");
+        let choice = prompt(
+          "Enter 1 for First-Class (Seats 1-5) or 2 for Economy (Seats 6-10):"
+        );
+        if (choice !== "1" && choice !== "2") {
+          alert("Invalid choice! Please enter 1 or 2.");
+          return;
+        }
+        let start = choice === "1" ? 0 : 5;
+        let end = choice === "1" ? 5 : 10;
+        let seatNumber = -1;
+        for (let i = start; i < end; i++) {
+          if (seats[i] === 0) {
+            seats[i] = 1;
+            seatNumber = i + 1;
+            break;
+          }
+        }
+        if (seatNumber === -1) {
+          let alternativeChoice = choice === "1" ? "Economy" : "First-Class";
+          let acceptAlternative = confirm(
+            `${alternativeChoice} section is available. Do you want to book there?`
+          );
+          if (acceptAlternative) {
+            start = choice === "1" ? 5 : 0;
+            end = choice === "1" ? 10 : 5;
+            for (let i = start; i < end; i++) {
+              if (seats[i] === 0) {
+                seats[i] = 1;
+                seatNumber = i + 1;
+                break;
+              }
+            }
+            if (seatNumber == -1) {
+              alert("Sorry the flight is Full");
+              return;
+            }
+          } else {
+            alert("Booking Cancelled by user");
+            return;
+          }
+        }
+        let seatClass = seatNumber <= 5 ? "First-Class" : "Economy";
+        document.getElementById(
+          "boardingPass"
+        ).innerHTML = `Passenger: ${name}, Seat No: ${seatNumber}, Class: ${seatClass}`;
+        updateTable();
+      }
+      function updateTable() {
+        let tableContent = "";
+        for (let i = 0; i < seats.length; i++) {
+          let seatClass = i < 5 ? "First-Class" : "Economy";
+          let status = seats[i] === 0 ? "Available" : "Booked";
+          tableContent += `<tr><td>${
+            i + 1
+          }</td><td>${seatClass}</td><td>${status}</td></tr>`;
+        }
+        document.getElementById("seatTable").innerHTML = tableContent;
+      }
+      updateTable();
+    </script>
+  </body>
+</html>

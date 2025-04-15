@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1012</title>
+</head>
+<body  >
+    <font face="Arial" >
+
+    <form>
+        <fieldset>
+            <legend >
+                Login
+            </legend>
+                        <label for="fname">Username*</label><br/>
+                        <input type="text" id="fname" name="fname" required><br/>
+                        <label for="pass">Password*</label><br/>
+                        <input type="password" id="pass" name="pass" required>
+          </fieldset>
+
+        <fieldset>
+            <legend >
+                Gender*
+            </legend>
+
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female" required>
+            <label for="female">Female</label><br>
+          </fieldset>
+
+
+        <fieldset>
+            <legend >
+                Programming Skill
+            </legend>
+
+            <input type="checkbox" id="Java" name="Java" value="Java">
+            <label for="Java">Java</label>
+            <input type="checkbox" id="C++" name="C++" value="C++">
+            <label for="C++">C++</label>
+            <input type="checkbox" id="C#" name="C#" value="C#">
+            <label for="C#">C#</label><br>
+            
+          </fieldset>
+
+          <fieldset>
+            <legend >
+                Fruit:
+            </legend>
+            <table>
+                <tr height="30px">
+                    <td  >
+                        <label for="fruit">Choose a Fruit</label>
+                    </td>
+                    <td >
+                        <span>:</span>
+                    </td>
+                    <td>
+                        <select name="fruit" id="fruit">
+                            <optgroup label="Pome">
+                              <option value="Apples">Apples</option>
+                              <option value="Pears">Pears</option>
+                            </optgroup>
+                            <optgroup label="Citrus">
+                              <option value="Oranges">Oranges</option>
+                              <option value="Grapefruits">Grapefruits</option>
+                              <option value="Mandarins">Mandarins</option>
+                              <option value="Limes">Limes</option>
+                            </optgroup>
+                            <optgroup label="Stone">
+                                <option value="Nectarines">Nectarines</option>
+                                <option value="Apricots">Apricots</option>
+                                <option value="Peaches">Peaches</option>
+                                <option value="Plums">Plums</option>
+                            </optgroup>
+                            <optgroup label="Exotic">
+                              <option value="Bananas">Bananas</option>
+                              <option value="Mangoes">Mangoes</option>
+                            </optgroup>
+                            <optgroup label="Berries">
+                              <option value="Strawberries">Strawberries</option>
+                              <option value="Raspberries">Raspberries</option>
+                              <option value="Blueberries">Blueberries</option>
+                              <option value="Kiwifruit">Kiwifruit</option>
+                              <option value="Passionfruit">Passionfruit</option>
+                            </optgroup>
+                            <optgroup label="Melons">
+                                <option value="Watermelons">Watermelons</option>
+                                <option value="Rock-Melons">Rock-Melons</option>
+                                <option value="Honeydew Melons">Honeydew Melons</option>
+                            </optgroup>
+                    </td>
+                </tr>
+            </table>
+          </fieldset>
+        <textarea id="address" rows="4" cols="100" placeholder="Enter your comment here"></textarea>
+        <br/>
+        <button type="submit" >SEND</button>
+        <button type="reset" >RESET</button>
+
+    </form>
+</body>
+</html>

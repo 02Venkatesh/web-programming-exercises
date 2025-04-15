@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Temperature Categorization | 23BCE1012</title>
+  </head>
+  <body>
+    <h2>New York City Temperature Report</h2>
+    <table border="1">
+      <tr>
+        <th>Day</th>
+        <th>Temperature (°F)</th>
+        <th>Category</th>
+      </tr>
+      <tbody id="tempTable"></tbody>
+    </table>
+    <h3>Summary:</h3>
+    <p>Hot Days: <span id="hotDays"></span></p>
+    <p>Pleasant Days: <span id="pleasantDays"></span></p>
+    <p>Cold Days: <span id="coldDays"></span></p>
+    <script>
+      let temperatures = [
+        55, 62, 68, 74, 59, 45, 41, 58, 60, 67, 65, 78, 82, 88, 91, 92, 90, 93,
+        87, 80, 78, 79, 72, 68, 61, 59, 55, 65,
+      ];
+      let hotDays = 0,
+        pleasantDays = 0,
+        coldDays = 0;
+      let tableContent = "";
+      for (let i = 0; i < temperatures.length; i++) {
+        let category;
+        if (temperatures[i] >= 85) {
+          category = "HOT";
+          hotDays++;
+        } else if (temperatures[i] >= 60) {
+          category = "PLEASANT";
+          pleasantDays++;
+        } else {
+          category = "COLD";
+          coldDays++;
+        }
+        tableContent += `<tr><td>${i + 1}</td><td>${
+          temperatures[i]
+        }</td><td>${category}</td></tr>`;
+      }
+      document.getElementById("tempTable").innerHTML = tableContent;
+      document.getElementById("hotDays").innerHTML = hotDays;
+      document.getElementById("pleasantDays").innerHTML = pleasantDays;
+      document.getElementById("coldDays").innerHTML = coldDays;
+    </script>
+  </body>
+</html>

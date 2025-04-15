@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Styling | 23BCE1012</title>
+    <link rel="stylesheet" href="sixth.css" />
+    <style>
+      .first ul li::marker {
+        color: gray;
+      }
+      .myphto {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        border: 2px solid black;
+        position: relative;
+        object-fit: cover;
+      }
+      .myphto::after {
+        content: "";
+        width: 150px;
+        height: 150px;
+        display: inline-block;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="first">
+      <table style="width: 30rem; border: 2px solid orange" cellspacing="0">
+        <tr style="background-color: orange">
+          <th
+            style="
+              font-size: 2rem;
+              color: white;
+              width: 100%;
+              text-align: left;
+              padding: 0.3rem 2rem;
+            "
+          >
+            Learn Data Science!
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li
+                style="color: cadetblue; font-size: 1.5rem; font-weight: bold"
+              >
+                Unlimited Jobs
+              </li>
+              <li
+                style="color: cadetblue; font-size: 1.5rem; font-weight: bold"
+              >
+                Best benefits anywhere
+              </li>
+              <li
+                style="color: cadetblue; font-size: 1.5rem; font-weight: bold"
+              >
+                Call now for an appointment
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="second">
+      <table cellspacing="10px">
+        <tr>
+          <td>
+            <button class="clearbtn">C</button>
+          </td>
+          <td colspan="3">
+            <input type="text" disabled rowspan value="78" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button>7</button>
+          </td>
+          <td>
+            <button>8</button>
+          </td>
+          <td>
+            <button>9</button>
+          </td>
+          <td>
+            <button class="fnbtn">+</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button>4</button>
+          </td>
+          <td>
+            <button>5</button>
+          </td>
+          <td>
+            <button>6</button>
+          </td>
+          <td>
+            <button class="fnbtn">-</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button>1</button>
+          </td>
+          <td>
+            <button>2</button>
+          </td>
+          <td>
+            <button>3</button>
+          </td>
+          <td>
+            <button class="fnbtn">&divide;</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button>0</button>
+          </td>
+          <td>
+            <button>.</button>
+          </td>
+          <td>
+            <button class="equalbtn">=</button>
+          </td>
+          <td>
+            <button class="fnbtn">x</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="spacer"></div>
+
+    <div class="third">
+      <figure align="center">
+        <img src="test.jpeg" class="myphto" alt="My Photo" />
+        <figcaption>
+          <br />
+          <font face="Monospace" size="4" color="#333"
+            ><b>Fig. 1. Photo</b></font
+          >
+        </figcaption>
+      </figure>
+    </div>
+  </body>
+</html>

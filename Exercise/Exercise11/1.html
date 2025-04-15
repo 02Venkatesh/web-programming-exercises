@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Dynamic Table and UI Interactions | 23BCE1012</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+      }
+      button,
+      input[type="text"],
+      input[type="number"] {
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        margin: 5px;
+        font-size: 16px;
+      }
+      button {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      button:hover {
+        background-color: green;
+      }
+      input[type="text"]:focus {
+        background-color: yellow;
+      }
+      .greeting-message {
+        margin-top: 10px;
+
+        font-weight: bold;
+        color: green;
+      }
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      li {
+        margin: 5px 0;
+        background-color: #f1f1f1;
+        padding: 5px;
+        border-radius: 4px;
+      }
+      .key-press-counter {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Interactive UI Elements</h1>
+      <h2>Dynamic Table (3x3)</h2>
+      <table id="dynamicTable"></table>
+      <h2>Button Color Change on Hover</h2>
+      <button id="hoverButton">Hover over me!</button>
+      <h2>Textbox Focus and Greeting</h2>
+      <input type="text" id="focusTextbox" placeholder="Focus here!" />
+      <p id="greeting" class="greeting-message"></p>
+      <h2>Double Click to Add List Item</h2>
+      <input type="text" id="inputText" placeholder="Enter item text" />
+      <button id="addItemButton">Add Item</button>
+      <ul id="itemList"></ul>
+      <h2>Key Press Counter</h2>
+      <input type="text" id="keyPressField" placeholder="Type anything" />
+      <p id="keyPressCount" class="key-press-counter">Key Presses: 0</p>
+    </div>
+    <script>
+      const table = document.getElementById("dynamicTable");
+      for (let i = 0; i < 3; i++) {
+        let row = table.insertRow();
+        for (let j = 0; j < 3; j++) {
+          let cell = row.insertCell();
+          cell.textContent = `Row ${i + 1}, Col ${j + 1}`;
+        }
+      }
+      const button = document.getElementById("hoverButton");
+      button.addEventListener(
+        "mouseover",
+        () => (button.style.backgroundColor = "green")
+      );
+      button.addEventListener(
+        "mouseout",
+        () => (button.style.backgroundColor = "red")
+      );
+      const textbox = document.getElementById("focusTextbox");
+      const greetingMessage = document.getElementById("greeting");
+      textbox.addEventListener(
+        "focus",
+        () => (textbox.style.backgroundColor = "yellow")
+      );
+      textbox.addEventListener("change", () => {
+        greetingMessage.textContent = `Hello, ${textbox.value}!`;
+      });
+      const addItemButton = document.getElementById("addItemButton");
+      const inputText = document.getElementById("inputText");
+      const itemList = document.getElementById("itemList");
+      addItemButton.addEventListener("dblclick", () => {
+        if (inputText.value.trim()) {
+          const li = document.createElement("li");
+          li.textContent = inputText.value;
+          itemList.appendChild(li);
+          inputText.value = "";
+        }
+      });
+      const keyPressField = document.getElementById("keyPressField");
+      const keyPressCount = document.getElementById("keyPressCount");
+      keyPressField.addEventListener("keydown", () => {
+        let count = parseInt(keyPressCount.textContent.split(": ")[1]);
+        keyPressCount.textContent = `Key Presses: ${count + 1}`;
+      });
+    </script>
+  </body>
+</html>

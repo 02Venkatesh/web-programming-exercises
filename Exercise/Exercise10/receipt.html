@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Receipt | 23BCE1012</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #6b705c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: #a5a58d;
+        padding: 20px;
+
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+      h2 {
+        color: #3a5a40;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: #d4a373;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .total {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Order Receipt</h2>
+      <p><strong>Name:</strong> <span id="customerName"></span></p>
+      <p><strong>Phone:</strong> <span id="phoneNumber"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <h3>Products Ordered</h3>
+      <ul id="productList"></ul>
+      <p class="total">Total Price: <span id="totalPrice"></span></p>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const customerName = urlParams.get("customerName");
+        const phoneNumber = urlParams.get("phoneNumber");
+
+        const email = urlParams.get("email");
+        document.getElementById("customerName").textContent = customerName;
+        document.getElementById("phoneNumber").textContent = phoneNumber;
+        document.getElementById("email").textContent = email;
+        const productList = document.getElementById("productList");
+        let totalPrice = 0;
+        const products = [
+          { name: "Apple", price: 10 },
+          { name: "Banana", price: 5 },
+          { name: "Avocado", price: 7 },
+        ];
+        products.forEach((product) => {
+          const kg = urlParams.get(product.name.toLowerCase() + "Kg");
+          if (kg && kg > 0) {
+            const cost = kg * product.price;
+            totalPrice += cost;
+            const listItem = document.createElement("li");
+            listItem.textContent = `${product.name}: ${kg} kg x 
+$${product.price} = $${cost}`;
+            productList.appendChild(listItem);
+          }
+        });
+        document.getElementById("totalPrice").textContent = `$${totalPrice}`;
+      });
+    </script>
+  </body>
+</html>

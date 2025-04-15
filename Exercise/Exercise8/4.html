@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Labour Cost Calculator | 23BCE1012</title>
+  </head>
+  <body>
+    <script>
+      let ratePerHour = 45;
+      let hoursWorked = parseFloat(prompt("Enter the number of hours worked:"));
+      let costOfMaterials = parseFloat(prompt("Enter the cost of materials:"));
+      let labourCost = ratePerHour * hoursWorked;
+      let totalCharge = labourCost + costOfMaterials;
+      alert(
+        "Labour cost: Rs." + labourCost + "\nTotal charge: Rs." + totalCharge
+      );
+    </script>
+  </body>
+</html>

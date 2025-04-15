@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Registration Display | 23BCE1012</title>
+  </head>
+  <body>
+    <script>
+      let regNo = prompt("Enter your Registration Number:");
+      let userName = prompt("Enter your Name:");
+      document.write(`<div style="border: 5px solid red; padding: 10px; 
+display: inline-block; font-weight: bold;">${regNo}</div>`);
+      document.write(
+        '<div id="nameDisplay" style="margin-top: 10px;border: 2px solid black; padding: 10px; width: fit-content"></div>'
+      );
+      document.getElementById("nameDisplay").innerHTML =
+        '<span style="color: red; font-weight: bold;">*' +
+        userName +
+        "*</span>";
+    </script>
+  </body>
+</html>

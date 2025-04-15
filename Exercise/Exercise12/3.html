@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clock | 23BCE1012</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+      canvas {
+        background-color: #ffffff;
+        border: 10px solid #333;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="analogClock" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("analogClock");
+      const ctx = canvas.getContext("2d");
+      const radius = canvas.height / 2;
+      ctx.translate(radius, radius);
+      function drawClock() {
+        ctx.clearRect(-radius, -radius, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.lineWidth = 5;
+        ctx.fillStyle = "#fff";
+        ctx.fill();
+        ctx.strokeStyle = "#333";
+        ctx.stroke();
+        ctx.font = "24px Arial";
+        ctx.fillStyle = "#333";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        for (let hour = 1; hour <= 12; hour++) {
+          let angle = (hour * Math.PI) / 6 - 45.55;
+          let x = (radius - 30) * Math.cos(angle);
+          let y = (radius - 30) * Math.sin(angle);
+          ctx.fillText(hour, x, y);
+        }
+        const now = new Date();
+        const currentHour = now.getHours() % 12;
+        const currentMinute = now.getMinutes();
+        const currentSecond = now.getSeconds();
+        drawHand(currentHour * 30 + currentMinute / 2 - 90, radius - 80, 6);
+        drawHand(currentMinute * 6 - 90, radius - 45, 4);
+        drawHand(currentSecond * 6 - 90, radius - 20, 2, "#ff0000");
+        ctx.beginPath();
+        ctx.arc(0, 0, 8, 0, 2 * Math.PI);
+        ctx.fillStyle = "#333";
+        ctx.fill();
+      }
+      function drawHand(angle, length, width, color = "#333") {
+        const radian = (Math.PI / 180) * angle;
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(length * Math.cos(radian), length * Math.sin(radian));
+        ctx.lineWidth = width;
+        ctx.strokeStyle = color;
+        ctx.stroke();
+      }
+      setInterval(drawClock, 1000);
+      drawClock();
+    </script>
+  </body>
+</html>

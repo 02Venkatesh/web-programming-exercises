@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Stopwatch, Age Calculation & Textarea Counter | 23BCE1012</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f8fa;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      button,
+      input[type="text"],
+      input[type="date"],
+      textarea {
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 16px;
+        border-radius: 5px;
+        border: 2px solid #ddd;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      .stopwatch {
+        text-align: center;
+        font-size: 24px;
+        margin-top: 20px;
+      }
+      .counter-textarea {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .character-count {
+        font-size: 16px;
+        margin-top: 10px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Stopwatch</h2>
+      <div class="stopwatch">
+        <p id="stopwatchDisplay">00:00</p>
+        <button id="startBtn">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+      <h2>Age Calculation on Mouse Over</h2>
+      <input type="date" id="dob" placeholder="Enter Date of Birth" />
+      <p id="ageDisplay">Your Age:</p>
+      <h2>Textarea with Character Counter</h2>
+      <div class="counter-textarea">
+        <textarea
+          id="userTextarea"
+          rows="4"
+          cols="50"
+          placeholder="Type 
+something..."
+        ></textarea>
+        <p id="charCount" class="character-count">Characters Typed: 0</p>
+      </div>
+    </div>
+    <script>
+      let stopwatchInterval;
+      let time = 0;
+      const stopwatchDisplay = document.getElementById("stopwatchDisplay");
+      const startBtn = document.getElementById("startBtn");
+      const stopBtn = document.getElementById("stopBtn");
+      const resetBtn = document.getElementById("resetBtn");
+      startBtn.addEventListener("click", () => {
+        stopwatchInterval = setInterval(() => {
+          time++;
+          let minutes = Math.floor(time / 60);
+          let seconds = time % 60;
+          stopwatchDisplay.textContent = `${String(minutes).padStart(
+            2,
+            "0"
+          )}:${String(seconds).padStart(2, "0")}`;
+        }, 1000);
+        startBtn.disabled = true;
+        stopBtn.disabled = false;
+      });
+      stopBtn.addEventListener("click", () => {
+        clearInterval(stopwatchInterval);
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      });
+      resetBtn.addEventListener("click", () => {
+        clearInterval(stopwatchInterval);
+        time = 0;
+        stopwatchDisplay.textContent = "00:00";
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+      });
+      const dobInput = document.getElementById("dob");
+      const ageDisplay = document.getElementById("ageDisplay");
+      dobInput.addEventListener("mouseover", () => {
+        const dob = new Date(dobInput.value);
+        const age = new Date().getFullYear() - dob.getFullYear();
+        ageDisplay.textContent = `Your Age: ${age}`;
+      });
+      const userTextarea = document.getElementById("userTextarea");
+      const charCount = document.getElementById("charCount");
+      userTextarea.addEventListener("input", () => {
+        charCount.textContent = `Characters Typed: 
+${userTextarea.value.length}`;
+      });
+    </script>
+  </body>
+</html>

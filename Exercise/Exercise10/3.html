@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery Order Form | 23BCE1012</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: monospace;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #6b705c;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        background: #a5a58d;
+        padding: 20px;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        color: #3a5a40;
+        text-align: center;
+        font-size: 25px;
+      }
+      .formInputs {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+        font-weight: bold;
+        gap: 8px;
+      }
+      .formInputs label {
+        font-size: 14px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="number"] {
+        padding: 10px 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        outline: 0;
+      }
+      .products {
+        border-top: 2px solid #3a5a40;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      .product {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        background-color: white;
+        border-radius: 50%;
+      }
+      button {
+        background-color: #96db40;
+        color: #333;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      button:hover {
+        background-color: #7ab135;
+      }
+      .kgInputs {
+        width: 70px !important;
+      }
+
+      .product-checkbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        gap: 5px;
+      }
+      .product-checkbox p {
+        font-size: 13px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Grocery Order Form</h2>
+      <form
+        id="orderForm"
+        action="receipt.html"
+        method="GET"
+        onsubmit="return validateForm()"
+      >
+        <div class="formInputs">
+          <label>Customer Name: </label>
+          <input type="text" name="customerName" id="customerName" required />
+        </div>
+        <div class="formInputs">
+          <label>Phone Number: </label>
+          <input
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+            required
+            pattern="\d{10}"
+          />
+        </div>
+        <div class="formInputs">
+          <label>Email: </label>
+          <input type="email" name="email" id="email" required />
+        </div>
+        <br />
+        <div class="products">
+          <h3>Products</h3>
+          <div class="product">
+            <img src="apple.jpg" alt="Apple" />
+            <div class="product-checkbox">
+              <input
+                type="checkbox"
+                name="product"
+                value="Apple"
+                data-price="10"
+              />
+              <p>Apple</p>
+            </div>
+            <span>$10/kg</span>
+            <input
+              class="kgInputs"
+              type="number"
+              name="appleKg"
+              min="1"
+              placeholder="kg"
+              disabled
+            />
+          </div>
+          <div class="product">
+            <img src="banana.jpg" alt="Banana" />
+            <div class="product-checkbox">
+              <input
+                type="checkbox"
+                name="product"
+                value="Banana"
+                data-price="5"
+              />
+              <p>Banana</p>
+            </div>
+            <span>$5/kg</span>
+            <input
+              class="kgInputs"
+              type="number"
+              name="bananaKg"
+              min="1"
+              placeholder="kg"
+              disabled
+            />
+          </div>
+          <div class="product">
+            <img src="avocado.jpg" alt="Avocado" />
+            <div class="product-checkbox">
+              <input
+                type="checkbox"
+                name="product"
+                value="Avocado"
+                data-price="7"
+              />
+              <p>Avocado</p>
+            </div>
+            <span>$7/kg</span>
+            <input
+              class="kgInputs"
+              type="number"
+              name="avocadoKg"
+              min="1"
+              placeholder="kg"
+              disabled
+            />
+          </div>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <script>
+      function validateForm() {
+        const name = document.getElementById("customerName").value.trim();
+        const phone = document.getElementById("phoneNumber").value.trim();
+        const email = document.getElementById("email").value.trim();
+        if (name === "" || phone === "" || email === "") {
+          alert("All fields are required.");
+          return false;
+        }
+        return true;
+      }
+
+      document
+        .querySelectorAll('input[type="checkbox"]')
+        .forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            this.parentElement.parentElement.querySelector(
+              'input[type="number"]'
+            ).disabled = !this.checked;
+          });
+        });
+    </script>
+  </body>
+</html>

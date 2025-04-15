@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1012</title>
+</head>
+<body  >
+    <font face="Arial" >
+
+    <form>
+        <fieldset>
+            <legend >
+                <font face="Arial" color="red">
+                Personal Details:
+            </font>
+            </legend>
+            <table>
+                <tr height="30px">
+                    <td width="100px" >
+                        <label for="fname">Name</label>
+                    </td>
+                    <td width="15px">
+
+                        <span>:</span>
+                    </td>
+                    <td>
+
+                        <input type="text" id="fname" name="fname">
+                    </td>
+                </tr>
+                <tr height="30px">
+                    <td>
+
+                        <label for="pass">Password</label>
+                    </td>
+                    <td>
+
+                        <span>:</span>
+                    </td>
+                    <td>
+
+                        <input type="password" id="pass" name="pass">
+                    </td>
+                </tr>
+                <tr height="30px">
+                    <td>
+
+                        <label for="email">E-mail id</label>
+                    </td>
+                    <td>
+
+                        <span>:</span>
+                    </td>
+                    <td>
+
+                        <input type="email" id="email" name="email">
+                    </td>
+                </tr>
+                <tr height="40px">
+                    <td>
+
+                        <label for="gender">Gender</label>
+                    </td>
+                    <td>
+
+                        <span>:</span>
+                    </td>
+                    <td>
+
+                        <input type="radio" id="Male" name="Gender" value="Male">
+                        <label for="Male">Male</label>
+                        <input type="radio" id="Female" name="Gender" value="Female">
+                        <label for="Female">Female</label><br>
+                    </td>
+                </tr>
+                <tr height="40px">
+                    <td>
+
+                        <label for="dob">DOB</label>
+                    </td>
+                    <td>
+                        <span>:</span>
+                    </td>
+                    <td>
+                        <input type="date" id="dob">
+                    </td>
+                </tr>
+                <tr height="40px">
+                    <td>
+                        <label for="phone">Mobile#</label>
+                    </td>
+                    <td>
+                        <span>:</span>
+                    </td>
+                    <td>
+                        <input type="tel" id="phone" >
+                    </td>
+                </tr>
+            </table>
+          </fieldset>
+
+          <br/>
+          <br/>
+          <fieldset>
+            <legend >
+                <font face="Arial" color="red">
+                Educational Qualifications:
+            </font>
+            </legend>
+            <br/>
+            <br/>
+            <table>
+                <tr height="30px">
+                    <td width="100px" >
+                        <label for="degree">Degree</label>
+                    </td>
+                    <td width="15px">
+
+                        <span>:</span>
+                    </td>
+                    <td>
+                        <select name="degree" id="degree">
+                            <optgroup label="UG">
+                              <option value="BE">BE</option>
+                              <option value="BTech">BTech</option>
+                              <option value="BSc">BSc</option>
+                              <option value="BA">BA</option>
+                              <option value="BCA">BCA</option>
+                              <option value="BBA">BBA</option>
+                              <option value="Others">Others</option>
+                            </optgroup>
+                            <optgroup label="PG">
+                              <option value="ME">ME</option>
+                              <option value="Mtech">Mtech</option>
+                              <option value="MSc">MSc</option>
+                              <option value="MA">MA</option>
+                              <option value="MCA">MCA</option>
+                              <option value="MBA">MBA</option>
+                              <option value="Others">Others</option>
+                            </optgroup>
+                            <optgroup label="PHD">
+                                <option value="Engineering">Engineering</option>
+                                <option value="Science">Science</option>
+                                <option value="Management">Management</option>
+                                <option value="Others">Others</option>
+                              </optgroup>
+                    </td>
+                    <td width="100px" align="right">
+                        <label for="eng">Engineering</label>
+                    </td>
+                    <td width="15px">
+                        <span>:</span>
+                    </td>
+                    <td>
+                        <select name="eng" id="eng">
+                            <option value="CSE">CSE</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="MECH">MECH</option>
+                          </select>
+                    </td>
+                </tr>
+            </table>
+          </fieldset>
+<br/>
+          <table>
+            <tr height="30px">
+                <td width="100px" >
+                    <label>Hobbies</label>
+                </td>
+                <td width="15px">
+                    <span>:</span>
+                </td>
+                <td>
+                    <input type="checkbox" id="chess" name="chess" value="Playing Chess">
+<label for="chess">Playing Chess</label>
+<input type="checkbox" id="books" name="books" value="Reading Books">
+<label for="books">Reading Books</label>
+                </td>
+                
+            </tr>
+
+        </table>
+        <table>
+            <tr height="30px">
+                <td  >
+                    <label for="color">Favourite Color</label>
+                </td>
+                <td width="15px">
+                    :
+                </td>
+                <td>
+                    <input type="color" id="color" >
+                </td>
+                
+            </tr>
+        </table>
+
+        <br/>
+        <font color="red">
+            <label for="address">
+                Address
+            </label>
+            <br/><br/>
+        </font>
+        <textarea id="address" rows="4" cols="100"></textarea>
+        <br/>
+        <br/>
+
+        <table>
+            <tr height="30px">
+                <td  >
+                    <label for="file">Attach Resume</label>
+                </td>
+                <td width="15px">
+                    :
+                </td>
+                <td>
+                    <input type="file" id="file" accept=".pdf" >
+                </td>
+                <td><button type="submit" >Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+
+</font>
+</body>
+</html>

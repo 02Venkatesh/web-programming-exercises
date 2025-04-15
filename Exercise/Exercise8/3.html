@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, 
+initial-scale=1.0"
+    />
+    <title>Student Confirmation | 23BCE1012</title>
+  </head>
+  <body>
+    <script>
+      let registrationNumber = prompt("Please enter your registration number:");
+      let isStudent = confirm("Are you a student?");
+      if (isStudent) {
+        alert(
+          "Registration number: " + registrationNumber + " - You are a student."
+        );
+      } else {
+        alert(
+          "Registration number: " +
+            registrationNumber +
+            " - You are not a student."
+        );
+      }
+    </script>
+  </body>
+</html>

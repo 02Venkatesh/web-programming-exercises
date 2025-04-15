@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Selection Methods | 23BCE1012</title>
+  </head>
+  <body>
+    <h1 id="title">Original Title</h1>
+    <input type="text" name="username" value="" />
+    <input type="radio" name="gender" value="Male" /> Male
+    <input type="radio" name="gender" value="Female" /> Female
+    <p class="info">Paragraph 1</p>
+    <p class="info">Paragraph 2</p>
+    <ul>
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+    <input type="text" class="input-field" />
+    <p class="info">Another paragraph</p>
+    <input type="checkbox" class="hobby" value="Sports" /> Sports
+    <input type="checkbox" class="hobby" value="Music" /> Music
+    <script>
+      document.getElementById("title").textContent = "Updated Title";
+      document.getElementsByName("username")[0].value = "John Doe";
+      document.getElementsByName("gender").forEach((radio) => {
+        if (radio.checked) console.log(radio.value);
+      });
+      console.log(
+        "Total <p> elements: " + document.getElementsByTagName("p").length
+      );
+      Array.from(document.getElementsByTagName("li")).forEach((li) =>
+        console.log(li.textContent)
+      );
+      Array.from(document.getElementsByClassName("input-field")).forEach(
+        (el) => (el.style.backgroundColor = "lightblue")
+      );
+      document.querySelector(".info").textContent =
+        "This is the first info paragraph";
+      console.log(
+        "Selected radio button: " +
+          document.querySelector("input[name='gender']:checked")?.value
+      );
+      document
+        .querySelectorAll(".info")
+        .forEach((el) => console.log(el.textContent));
+      document
+        .querySelectorAll(".hobby")
+        .forEach((checkbox) => (checkbox.checked = true));
+    </script>
+  </body>
+</html>
