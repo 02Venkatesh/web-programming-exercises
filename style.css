@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  padding: 4rem 12rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.nav h2 {
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 0.3rem;
+  color: #ff6b6b;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.nav p {
+  font-size: 1.8rem;
+  color: #ffffff;
+  padding: 1.2rem 3rem;
+  border-radius: 0.8rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.wrapper h2 {
+  font-size: 3rem;
+  color: #fcd34d;
+  text-decoration: underline;
+  letter-spacing: 0.2rem;
+}
+
+.mainCont {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4rem;
+  width: 100%;
+}
+
+.exercise {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.exercise:hover {
+  transform: translateY(-5px);
+}
+
+.exercise h3 {
+  font-size: 2rem;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.exercise-list-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.exercise-list-wrapper a {
+  font-size: 1.5rem;
+  color: #38bdf8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.exercise-list-wrapper a:hover {
+  color: #0ea5e9;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+  html {
+    font-size: 55%;
+  }
+  body {
+    padding: 3rem 8rem;
+  }
+  .mainCont {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 50%;
+  }
+  .mainCont {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 45%;
+  }
+  .mainCont {
+    grid-template-columns: 1fr;
+  }
+}
