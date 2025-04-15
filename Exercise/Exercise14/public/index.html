@@ -2,42 +2,125 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>23BCE1012</title>
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <title>React App</title>
+    <script defer="defer" src="./static/js/main.d0c5ac7d.js"></script>
+    <link href="./static/css/main.31d6cfe0.css" rel="stylesheet" />
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="root">
+      <div class="App">
+        <!-- First Section -->
+        <div class="first">
+          <div>
+            <h2>Image from Public Folder</h2>
+            <img alt="Public Folder Image" width="300" src="./test.jpeg" />
+          </div>
+          <div>
+            <h2>Image from src Folder</h2>
+            <img alt="Src Folder Image" width="300" src="./someMonument.jpg" />
+          </div>
+        </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+        <!-- Second Section -->
+        <div class="second">
+          <div
+            style="
+              width: 500px;
+              margin: 20px auto;
+              font-family: Arial, sans-serif;
+              display: flex;
+              flex-direction: column;
+              gap: 1rem;
+            "
+          >
+            <h2 style="text-align: center;">Novell Services Login</h2>
+            <form style="display: flex; flex-direction: column; gap: 1rem;">
+              <div style="display: flex; gap: 1rem;">
+                <label>Username:</label>
+                <input type="text" value="" name="username" />
+              </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+              <div style="display: flex; gap: 1rem;">
+                <label>Password:</label>
+                <input type="password" value="" name="password" />
+              </div>
+
+              <div style="display: flex; gap: 1rem;">
+                <label>City of Employment:</label>
+                <input type="text" value="" name="city" />
+              </div>
+
+              <div style="display: flex; gap: 1rem;">
+                <label>Web Server:</label>
+                <select name="webServer">
+                  <option value="">-- Choose a server --</option>
+                  <option value="server1">Server 1</option>
+                  <option value="server2">Server 2</option>
+                </select>
+              </div>
+
+              <fieldset>
+                <legend>Please specify your role:</legend>
+                <div style="display: flex; gap: 1rem; margin: 1rem;">
+                  <label><input type="radio" value="Admin" name="role" /> Admin</label>
+                  <label><input type="radio" value="Engineer" name="role" /> Engineer</label>
+                  <label><input type="radio" value="Manager" name="role" /> Manager</label>
+                  <label><input type="radio" value="Guest" name="role" /> Guest</label>
+                </div>
+              </fieldset>
+
+              <fieldset>
+                <legend>Single Sign-on to the following:</legend>
+                <div style="display: flex; gap: 1rem; margin: 1rem;">
+                  <label><input type="checkbox" name="mail" /> Mail</label>
+                  <label><input type="checkbox" name="payroll" /> Payroll</label>
+                  <label><input type="checkbox" name="selfService" /> Self-service</label>
+                </div>
+              </fieldset>
+
+              <div style="text-align: center; display: flex; gap: 1rem;">
+                <button type="submit">Login</button>
+                <button type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Third Section -->
+        <div class="third">
+          <div>
+            <img
+              alt="Profile"
+              width="150"
+              height="150"
+              src="./Images/test.jpeg"
+              style="border-radius: 50%; object-fit: cover;"
+            />
+            <div>
+              <h2>Venkatesh</h2>
+              <p>Email: venkatesh@gmail.com</p>
+              <p>Bio: University Student passionate about React.</p>
+            </div>
+            <div>
+              <h3>User Posts</h3>
+              <ul>
+                <li>Learning React!</li>
+                <li>Building a profile page</li>
+                <li>React is awesome!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </body>
 </html>
