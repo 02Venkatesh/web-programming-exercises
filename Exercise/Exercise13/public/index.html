@@ -1,43 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+  <meta charset="UTF-8" />
+  <title>React-like Components Without React</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; line-height: 1.6; }
+    .styled-message { color: blue; font-weight: bold; }
+    .fruit-list li { color: green; }
+    .card { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+  </style>
+</head>
+<body>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <div id="app"></div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <script>
+    const app = document.getElementById('app');
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    // 1. Hello React (without JSX)
+    const h1 = document.createElement("h1");
+    h1.textContent = "Hello, React!";
+    app.appendChild(createCard("1(i)", h1.outerHTML));
+
+    // 1(ii) With JSX-like string
+    const jsxMessage = "Hello, React with JSX-like string!";
+    app.appendChild(createCard("1(ii)", `<h1>${jsxMessage}</h1>`));
+
+    // 1(iii) Display message from variable
+    let customMsg = "This is a variable-based message!";
+    app.appendChild(createCard("1(iii)", `<h1>${customMsg}</h1>`));
+
+    // 2. List of Fruits
+    const fruits = ["Apple", "Banana", "Mango"];
+    let fruitHTML = "<ul class='fruit-list'>" + fruits.map(f => `<li>${f}</li>`).join("") + "</ul>";
+    app.appendChild(createCard("2", fruitHTML));
+
+    // 3. Styled message
+    let styled = `<p class='styled-message'>This is a styled message!</p>`;
+    app.appendChild(createCard("3", styled));
+
+    // 4. Sum of squares
+    let a = 3, b = 4;
+    let sumSquares = a ** 2 + b ** 2;
+    app.appendChild(createCard("4", `<p>Sum of squares: ${sumSquares}</p>`));
+
+    // 5. Good Morning/Evening
+    let isMorning = new Date().getHours() < 12;
+    app.appendChild(createCard("5", `<p>${isMorning ? "Good Morning" : "Good Evening"}</p>`));
+
+    // 6. Current Day
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let today = new Date();
+    app.appendChild(createCard("6", `<p>Today is: ${days[today.getDay()]}</p>`));
+
+    // 7. Prime Checker
+    let num = 17;
+    const isPrime = n => n > 1 && ![...Array(n).keys()].slice(2).some(i => n % i === 0);
+    app.appendChild(createCard("7", `<p>${num} is ${isPrime(num) ? "a prime" : "not a prime"} number.</p>`));
+
+    // 8. Temperature Converter
+    // 8. Temperature Converter (Two-way dynamic)
+let tempHTML = `
+  <label>Celsius: <input id="celsius" type="number" oninput="convertCelsius()" /></label><br><br>
+  <label>Fahrenheit: <input id="fahrenheit" type="number" oninput="convertFahrenheit()" /></label>
+`;
+app.appendChild(createCard("8", tempHTML));
+
+// Converter Functions
+window.convertCelsius = function () {
+  const c = parseFloat(document.getElementById("celsius").value);
+  if (!isNaN(c)) {
+    document.getElementById("fahrenheit").value = ((c * 9) / 5 + 32).toFixed(2);
+  } else {
+    document.getElementById("fahrenheit").value = "";
+  }
+};
+
+window.convertFahrenheit = function () {
+  const f = parseFloat(document.getElementById("fahrenheit").value);
+  if (!isNaN(f)) {
+    document.getElementById("celsius").value = (((f - 32) * 5) / 9).toFixed(2);
+  } else {
+    document.getElementById("celsius").value = "";
+  }
+};
+
+
+    // 9. Reverse string & palindrome
+    let str = "madam";
+    let reversed = str.split("").reverse().join("");
+    let isPalindrome = str === reversed;
+    app.appendChild(createCard("9", `<p>Reversed: ${reversed}<br>${str} is ${isPalindrome ? "" : "not "}a palindrome</p>`));
+
+    // 10. Random Number Generator
+    let randomNumHTML = `<button onclick="generateRandom()">Generate Number</button><p id='random-output'></p>`;
+    app.appendChild(createCard("10", randomNumHTML));
+
+    // 11. Leap Year
+    let year = 2024;
+    let isLeap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+    app.appendChild(createCard("11", `<p>${year} is ${isLeap ? "" : "not "}a leap year.</p>`));
+
+    // 12. User Greeting
+    let firstName = "Venkatesh";
+    let lastName = "B";
+    app.appendChild(createCard("12", `<p>Hello, ${firstName} ${lastName}!</p>`));
+
+    // Helper functions
+    function createCard(title, content) {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `<strong>Task ${title}:</strong><br>${content}`;
+      return div;
+    }
+
+    function generateRandom() {
+      const output = document.getElementById("random-output");
+      output.textContent = "Random number: " + Math.floor(Math.random() * 100 + 1);
+    }
+  </script>
+</body>
 </html>
