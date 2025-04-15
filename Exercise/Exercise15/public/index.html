@@ -2,42 +2,214 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <title>React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .styled-button {
+        background-color: green;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>23BCE1012</title>
+      .footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: gray;
+      }
+
+      .dark-theme {
+        background-color: #222;
+        color: white;
+      }
+
+      .light-theme {
+        background-color: white;
+        color: black;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="root" class="light-theme">
+      <header>
+        <h1 id="header-title"></h1>
+      </header>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      <main>
+        <section>
+          <h2>Random Joke</h2>
+          <button onclick="getRandomJoke()">Get Random Joke</button>
+          <p id="joke"></p>
+        </section>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        <section>
+          <button style="background-color: blue; padding: 10px 20px; font-size: 16px; color: white; border: none; cursor: pointer;">
+            Inline Styled Button
+          </button>
+        </section>
+
+        <section>
+          <style>
+            .internal-button {
+              background-color: yellow;
+              padding: 10px 20px;
+              font-size: 16px;
+              color: black;
+              border: none;
+              cursor: pointer;
+            }
+          </style>
+          <button class="internal-button">Internal Styled Button</button>
+        </section>
+
+        <section>
+          <button class="styled-button">External Styled Button</button>
+        </section>
+
+        <section>
+          <h2>Lifecycle Demo</h2>
+          <p id="lifecycle-count">Count: 0</p>
+          <button onclick="incrementLifecycle()">Increment</button>
+          <button onclick="unmountLifecycle()">Unmount</button>
+        </section>
+
+        <section>
+          <h2>useState/useReducer Simulation</h2>
+          <p id="state-count">Count: 0</p>
+          <button onclick="stateIncrement()">Increase</button>
+          <button onclick="stateDecrement()">Decrease</button>
+        </section>
+
+        <section>
+          <h2>useEffect Simulation (Joke Fetcher)</h2>
+          <p id="joke-effect"></p>
+          <button onclick="getJokeEffect()">Get New Joke</button>
+        </section>
+
+        <section>
+          <h2>useRef Simulation</h2>
+          <input type="text" id="focus-input" placeholder="Focus me!" />
+          <button onclick="focusInput()">Focus Input</button>
+        </section>
+
+        <section>
+          <button onclick="toggleTheme()">Toggle Theme</button>
+        </section>
+
+        <section>
+          <h2>Props Simulation</h2>
+          <p id="child-message"></p>
+        </section>
+
+        <section>
+          <h2>Form using useState (Simulated)</h2>
+          <form onsubmit="handleFormStateSubmit(event)">
+            <label>Name: <input type="text" id="state-name" /></label><br />
+            <label>Email: <input type="email" id="state-email" /></label><br />
+            <button type="submit">Submit</button>
+          </form>
+          <p>Name: <span id="live-name"></span></p>
+          <p>Email: <span id="live-email"></span></p>
+        </section>
+
+        <section>
+          <h2>Form using useRef (Simulated)</h2>
+          <form onsubmit="handleFormRefSubmit(event)">
+            <label>Name: <input type="text" id="ref-name" /></label><br />
+            <label>Email: <input type="email" id="ref-email" /></label><br />
+            <button type="submit">Submit</button>
+          </form>
+          <p id="ref-output"></p>
+        </section>
+      </main>
+
+      <footer class="footer">© 2025 My React-like App</footer>
+    </div>
+
+    <script>
+      // Header with props
+      document.getElementById("header-title").innerText = "Hello World from 23BCE1010";
+
+      // Random Joke Generator
+      function getRandomJoke() {
+        document.getElementById("joke").innerText = "Loading joke...";
+        fetch("https://official-joke-api.appspot.com/random_joke")
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("joke").innerText = `${data.setup} - ${data.punchline}`;
+          });
+      }
+
+      // Lifecycle Simulation
+      let lifecycleCount = 0;
+      function incrementLifecycle() {
+        lifecycleCount++;
+        document.getElementById("lifecycle-count").innerText = `Count: ${lifecycleCount}`;
+        console.log("componentDidUpdate");
+      }
+      function unmountLifecycle() {
+        document.getElementById("lifecycle-count").innerText = "Component Unmounted";
+        console.log("componentWillUnmount");
+      }
+
+      // State & Reducer Simulation
+      let stateCount = 0;
+      function stateIncrement() {
+        stateCount++;
+        document.getElementById("state-count").innerText = `Count: ${stateCount}`;
+      }
+      function stateDecrement() {
+        stateCount--;
+        document.getElementById("state-count").innerText = `Count: ${stateCount}`;
+      }
+
+      // useEffect Simulation
+      function getJokeEffect() {
+        fetch("https://official-joke-api.appspot.com/random_joke")
+          .then((res) => res.json())
+          .then((data) => {
+            document.getElementById("joke-effect").innerText = `${data.setup} - ${data.punchline}`;
+          });
+      }
+      getJokeEffect();
+
+      // useRef Simulation
+      function focusInput() {
+        document.getElementById("focus-input").focus();
+      }
+
+      // Theme Context Simulation
+      function toggleTheme() {
+        const root = document.getElementById("root");
+        root.classList.toggle("dark-theme");
+        root.classList.toggle("light-theme");
+      }
+
+      // Props Simulation
+      const parentMessage = "Hello from Parent!";
+      document.getElementById("child-message").innerText = parentMessage;
+
+      // Form using useState
+      document.getElementById("state-name").addEventListener("input", (e) => {
+        document.getElementById("live-name").innerText = e.target.value;
+      });
+      document.getElementById("state-email").addEventListener("input", (e) => {
+        document.getElementById("live-email").innerText = e.target.value;
+      });
+      function handleFormStateSubmit(event) {
+        event.preventDefault();
+        alert("Form Submitted with useState simulation");
+      }
+
+      // Form using useRef
+      function handleFormRefSubmit(event) {
+        event.preventDefault();
+        const name = document.getElementById("ref-name").value;
+        const email = document.getElementById("ref-email").value;
+        document.getElementById("ref-output").innerText = `Name: ${name}, Email: ${email}`;
+      }
+    </script>
   </body>
 </html>
